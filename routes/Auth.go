@@ -10,5 +10,5 @@ func authRoute(rg *gin.RouterGroup) {
 
 	def := rg.Group("/auth")
 	def.POST("/login", auth.Login)
-	def.POST("/signup", auth.Login)
+	def.POST("/signup", auth.SignUp)
 }

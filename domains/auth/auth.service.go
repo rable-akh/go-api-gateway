@@ -21,3 +21,13 @@ func CreateLoginRequest(jsonQuery []byte) (*auth.LoginRequest, error) {
 	// input := []byte(jsonQuery)
 	return &u, protojson.Unmarshal(jsonQuery, &u)
 }
+
+// ////////////////// Login end ///////////////////////
+// ////////////////// signup //////////////////////////
+func SignUp(client auth.AuthClient, u *auth.SignUpRequest) (*auth.SignUpResponse, error) {
+	return client.SignUp(context.Background(), u)
+}
+func CreateSignUpRequest(query []byte) (*auth.SignUpRequest, error) {
+	u := auth.SignUpRequest{}
+	return &u, protojson.Unmarshal(query, &u)
+}
