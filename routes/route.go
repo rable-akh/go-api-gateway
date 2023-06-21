@@ -12,6 +12,7 @@ func RunRoutes() {
 	v1 := router.Group("/v1")
 	defaultRoute(v1)
 	authRoute(v1)
+	AdminRoute(v1)
 	///////////////////////
 
 	router.Run(":5000")
