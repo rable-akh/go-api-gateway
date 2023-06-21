@@ -53,3 +53,21 @@ func CreateTokenRequest(query []byte) (*auth.CheckTokenRequest, error) {
 	u := auth.CheckTokenRequest{}
 	return &u, protojson.Unmarshal(query, &u)
 }
+
+// ////////////////// Check Token //////////////////////////
+func Users(u *auth.UsersRequest) (*auth.UsersResponse, error) {
+	conn, err := domains.ServiceConn(config.AuthServiceURI())
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer conn.Close()
+	//////// connect with client //////////
+	client := auth.NewAuthClient(conn)
+	//////// connect with client //////////
+
+	return client.GetUsers(context.Background(), u)
+}
+func UsersRequest(query []byte) (*auth.UsersRequest, error) {
+	u := auth.UsersRequest{}
+	return &u, protojson.Unmarshal(query, &u)
+}
